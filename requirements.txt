@@ -1,0 +1,11 @@
+Flask
+Flask_Bootstrap
+Flask_Login
+Flask_SQLAlchemy
+Flask_WTF
+pandas
+plotly
+SQLAlchemy
+Werkzeug
+WTForms
+gunicorn
