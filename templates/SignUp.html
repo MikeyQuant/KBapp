@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{{BASE}}/SignUp" method="post">
+{% for x in valids %}
+{%if loop.index0 == 0 %}
+<label>Username</label>
+    <input name="user_name" type="text" value="{{user.u_name}}">
+    {% if 'Username' in x %}
+    <div class="alert alert-warning">
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="alert">
+                              x
+                            </button>
+                            {{ x }}
+                          </div>
+    {% endif %}
+    {% endif %}
+{%if loop.index0 == 1 %}
+<label>Email</label>
+    <input name="email" type="text" value="{{user.email}}">
+    {% if 'Email' in x %}
+    <div class="alert alert-warning">
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="alert">
+                              x
+                            </button>
+                            {{ x }}
+                          </div>
+    {% endif %}
+    {% endif %}
+{%if loop.index0 == 2 %}
+<label>Password</label>
+
+    <input name="password" type="password" value="{{password}}">
+    {% if 'Password' in x %}
+    <div class="alert alert-warning">
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="alert">
+                              x
+                            </button>
+                            {{ x }}
+                          </div>
+    {% endif %}
+    {% endif %}
+{%if loop.index0 == 2 %}
+<label>Confirm Password</label>
+
+    <input name="c_password" type="password" value="{{c_password}}">
+    {% if 'Password' in x %}
+    <div class="alert alert-warning">
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="alert">
+                              x
+                            </button>
+                            {{ x }}
+                          </div>
+    {% endif %}
+    {% endif %}
+{% endfor %}
+
+    <button type="submit" class="btn btn-success">Sign Up</button></form>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

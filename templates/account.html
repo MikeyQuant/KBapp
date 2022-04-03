@@ -1,0 +1,43 @@
+</br>
+</br>
+</br>
+</br>
+</br>
+<h2>{{user.user_name}}</h2>
+<form action="{{BASE}}editAccount" method="post">
+    <div class="col-auto">
+      <label  class="col-sm-2 col-form-label col-form-label-lg" for="email">Email</label>
+      <input type="text" class="form-control mb-2" id="email" name="email" placeholder="{{user.email}}">
+    </div>
+    <div class="col-auto">
+      <label  class="col-sm-2 col-form-label col-form-label-lg" for="twitter">Twitter</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        <input name="twitter" type="text" class="form-control" id="twitter" placeholder="{{user.twitter}}">
+      </div>
+    </div>
+        <div class="col-auto">
+      <label  class="col-sm-2 col-form-label col-form-label-lg" for="instagram">Instagram</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        <input name="instagram" type="text" class="form-control" id="instagram" placeholder="{{user.instagram}}">
+      </div>
+    </div>
+        <div class="col-auto">
+      <label  class="col-sm-2 col-form-label col-form-label-lg" for="tiktok">Tik-Tok</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        <input name="tiktok" type="text" class="form-control" id="tiktok" placeholder="{{user.tik}}">
+      </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Submit Changes">
+</form>
+
+</body>
+</html>

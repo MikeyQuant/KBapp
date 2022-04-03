@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+ <body>
+  </br>
+  </br>
+  </br>
+    </br>
+  </br>
+  <h1>{{question}}</h1>
+  <h4>Parameters: {{param}}</h4>
+  </br>
+  {% if items is not none %}
+  <h2>Top 5 Matches</h2>
+
+  <table class="table"><thead>
+   <tr><th scope="col">Username</th><th scope="col">Match Score</th><th scope="col">View Details</th></tr>
+    </thead>
+      <tbody>
+
+  {% for i in items %}
+  <tr>
+   <td scope="row">{{i.uname}}</td>
+   <td>{{i.points}}</td>
+   <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#Details{{i.index}}">View Details</button>
+
+</td></tr>
+
+   {% endfor %}
+
+    </tbody>
+
+   </table>
+  {% endif %}
+
+
+
+  <!--<div style="text-align:center" id='chart' class='chart'”></div>
+ <div style="text-align:right" id='avgScoreChart' class='avgScoreChart'”></div>-->
+  <h2>All Answers</h2>
+  <table class="table">
+      <th scope="Row">Answer</th><th scope="Row">Number of Answers</th><th scope="Row">Up/Down Vote Score</th><th scope="Row">Up/Down Vote</th><th scope="Row">Report</th>
+      {% for i in itemss.keys() %}
+      <tr><td>{{i}}</td><td>{{itemss[i][0]}}</td><td><span id="disp{{loop.index0}}">{{itemss[i][1]}}</span></td><td><form action="{{BASE}}/uvote/{{pid}}/{{i}}" method="post" target="sub"><button type="submit" id=gb{{loop.index0}} class="btn btn-success" onclick="uv{{loop.index0}}()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-up" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 3.707 2.354 9.354a.5.5 0 1 1-.708-.708l6-6z"/>
+  <path fill-rule="evenodd" d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+</svg></button><input type="hidden" id="upv{{loop.index0}}" value="0"></form><form action="{{BASE}}/dvote/{{pid}}/{{i}}" method="post" target="sub"><input type="hidden" id="downv{{loop.index0}}" value="0"><button type="submit" onclick="dv{{loop.index0}}()" id="bb{{loop.index0}}"  class="btn btn-danger" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+  <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+</svg></button></form></td><td><form action="{{BASE}}Flag/{{pid}}/{{i}}" method="post" target="sub"><button type="submit"  id="flag{{loop.index0}}"  class="btn btn-danger" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-flag-fill" viewBox="0 0 16 16">
+  <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001"/></svg></button></form></td></tr>
+      <script id="A{{loop.index0}}" type="text/javascript">
+          var count{{loop.index0}} = parseInt(document.getElementById("disp{{loop.index0}}").innerHTML);
+          function dv{{loop.index0}}() {
+            count{{loop.index0}} -= 1;
+            document.getElementById("disp{{loop.index0}}").innerHTML = count{{loop.index0}};};
+
+           function uv{{loop.index0}}() {
+            count{{loop.index0}} += 1;
+            document.getElementById("disp{{loop.index0}}").innerHTML = count{{loop.index0}};};
+
+
+      </script>
+      <!--<script id="A{{loop.index0}}" type="text/javascript">
+        var count{{loop.index0}} = parseInt(document.getElementById("disp{{loop.index0}}").innerHTML);
+        var upv{{loop.index0}} = parseInt(document.getElementById("upv{{loop.index0}}.value);
+        var downv{{loop.index0}} = parseInt(document.getElementById("downv{{loop.index0}}.value);
+        function dv{{loop.index0}}() {
+            if (downv == 0 && upv == 0){
+            count{{loop.index0}} -= 1;
+            downv{{loop.index0}} = 1;
+            document.getElementById("downv{{loop.index0}}").value = downv{{loop.index0}};
+            document.getElementById("disp{{loop.index0}}").innerHTML = count{{loop.index0}};}
+            else if (downv{{loop.index0}}==0 && upv{{loop.index0}}==1){
+                downv{{loop.index0}} = 1;
+                downv{{loop.index0}} = 0;
+                count{{loop.index0}} -= 2;
+                document.getElementById("downv{{loop.index0}}").value = downv{{loop.index0}};
+                document.getElementById("upv{{loop.index0}}").value = upv{{loop.index0}};
+                document.getElementById("disp{{loop.index0}}").innerHTML = count{{loop.index0}};}
+        };
+        function uv{{loop.index0}}() {
+                        if (downv == 0 && upv == 0){
+            count{{loop.index0}} += 1;
+            upv{{loop.index0}} = 1;
+            document.getElementById("upv{{loop.index0}}").value = upv{{loop.index0}};
+            document.getElementById("disp{{loop.index0}}").innerHTML = count{{loop.index0}};}
+            else if (downv{{loop.index0}}==1 && upv{{loop.index0}}==0){
+                downv{{loop.index0}} = 0;
+                upv{{loop.index0}} = 1;
+                count{{loop.index0}} += 2;
+                document.getElementById("downv{{loop.index0}}").value = downv{{loop.index0}};
+                document.getElementById("upv{{loop.index0}}").value = upv{{loop.index0}};
+                document.getElementById("disp{{loop.index0}}").innerHTML = count{{loop.index0}};}
+
+        };-->
+    </script>
+        {% endfor %}
+
+  </table>
+  <style>
+      #subframe {
+  display: none;}
+  </style>
+    <iframe display id="subframe" name="sub">
+
+</iframe>
+</body>
+<!--<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+
+<script type='text/javascript'>
+  var graphs = {{graphJSON | safe}};
+  Plotly.plot('chart',graphs,{});
+  var graphs = {{avgScoreChart | safe}};
+  Plotly.plot('avgScoreChart',graphs,{});
+</script>-->
+
+
+insertmodalshere
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

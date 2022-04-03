@@ -1,0 +1,61 @@
+  </br>
+  </br>
+  </br>
+    </br>
+  </br>
+  <h1>Moderator Panel</h1>
+  </br>
+  <h4>Unapproved Polls</h4>
+
+
+
+
+  <table class="table"><thead>
+   <tr><th scope="col">Question</th><th scope="col">Approve</th><th scope="col">Delete</th></tr>
+    </thead>
+      <tbody>
+
+  {% for i in q_items %}
+  <tr>
+   <td scope="row">{{i.question}}</td>
+      <td><form method="post"  action="{{BASE}}AddPoll/{{i.pid}}"><button type="submit" class="btn btn-success" data-toggle="modal" data-target="#Details{{i.index}}">Post Poll</button></form></td>
+      <td><form method="post"  action="{{BASE}}DeletePoll/{{i.pid}}"><button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#Details{{i.index}}">Remove Poll</button></form></td>
+  </tr>
+
+   {% endfor %}
+
+    </tbody>
+
+   </table>
+    </br>
+  <h4>Flagged Answers</h4>
+
+
+
+
+  <table class="table"><thead>
+   <tr><th scope="col">Answer</th><th scope="col">Question</th><th scope="col">Number of Flags</th><th scope="col">Approve</th><th scope="col">Delete</th></tr>
+    </thead>
+      <tbody>
+
+  {% for i in f_items %}
+  <tr>
+   <td scope="row">{{i.ans}}</td>
+      <td scope="row">{{i.question}}</td>
+      <td scope="row">{{i.num_flags}}</td>
+      <td><form method="post"  action="{{BASE}}Unflag/{{i.pid}}/{{i.ans}}"><button type="submit" class="btn btn-success" >Allow Answer</button></form></td>
+      <td><form method="post"  action="{{BASE}}PermaFlag/{{i.pid}}/{{i.ans}}"><button type="submit" class="btn btn-danger">Ban Answer</button></form></td>
+  </tr>
+
+   {% endfor %}
+
+    </tbody>
+
+   </table>
+  <style>
+      #subframe {
+  display: none;}
+  </style>
+    <iframe display id="subframe" name="sub">
+
+</iframe>

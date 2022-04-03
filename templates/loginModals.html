@@ -1,0 +1,50 @@
+{% import "bootstrap/wtf.html" as wtf %}
+<div class="modal fade" id="LogIn" tabindex="-1" role="dialog" aria-labelledby="addPromoterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add Promoter</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{BASE}}/LogIn" method="post">
+
+                <div class="modal-body">
+                {{ wtf.form_field(forml.email) }}
+                {{ wtf.form_field(forml.password) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Log In</button></div><input type="hidden" id="red" name="red" value="{{red}}"></form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="SignUp" tabindex="-1" role="dialog" aria-labelledby="addPromoterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Sign Up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{BASE}}/SignUp" method="post">
+
+                <div class="modal-body">
+                    {{ wtf.form_field(forms.user_name) }}
+
+
+
+                {{ wtf.form_field(forms.email) }}
+                {{ wtf.form_field(forms.password) }}
+                    {{ wtf.form_field(forms.c_password) }}
+                </div>
+                <div class="modal-footer">
+
+                    <button type="submit" class="btn btn-success">Sign Up</button></div></form>
+                </div>
+            </div>
+        </div>
+    </div>
