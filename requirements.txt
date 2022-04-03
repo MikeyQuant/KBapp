@@ -3,6 +3,7 @@ Flask_Bootstrap
 Flask_Login
 Flask_SQLAlchemy
 Flask_WTF
+numpy
 pandas
 plotly
 SQLAlchemy
